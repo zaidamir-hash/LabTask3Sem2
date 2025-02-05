@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+
+class NADRA{
+    private:
+    string CNIC;
+    string name;
+    int age;
+    char gender;
+
+    public:
+
+    void setcnic(string nic){
+        CNIC =nic;
+    }
+
+    void setname(string n){
+        name =n;
+
+    }
+    void setage(int a){
+        age =a;
+    }
+    void setgender(char g){
+        gender =g;
+    }
+    void getcnic(){
+        cout<<"Person's CNIC :"<<CNIC<<endl;
+    }
+    void getname(){
+        cout<<"Name :"<<name<<endl;
+        
+    }
+    void getage(){
+        cout<<"Age :"<<age<<endl;
+        
+    }
+    void getgender(){
+        cout<<"Gender :"<<gender<<endl;
+        
+    }
+
+    void updatename(string newname){
+        name = newname;
+    }
+    void updateage(int newage){
+        age = newage;
+        
+    }
+    void updategender(char newgender){
+        gender = newgender;
+    }
+
+    void DeleteRecord() {
+        CNIC = "";
+        name = "";
+        age = 0;
+        gender = '\0';
+    }
+    
+
+
+    
+
+};
+int main(){
+    string pcnic;
+    string pname;
+    int page;
+    char pgender;
+
+    cout<<"Enter Person's CNIC";
+    cin>>pcnic;
+    cout<<"Enter Person's name :";
+    cin>>pname;
+    cout<<"Enter Person's Age :";
+    cin>>page;
+    cout<<"Enter Person's Gender :";
+    cin>>pgender;
+    
+    NADRA p1;
+    p1.setcnic(pcnic);
+    p1.setname(pname);
+    p1.setage(page);
+    p1.setgender(pgender);
+    p1.getcnic();
+    p1.getname();
+    p1.getage();
+    p1.getgender();
+
+
+
+}
