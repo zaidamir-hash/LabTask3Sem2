@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+class LeapYear {
+private:
+    int year;
+
+public:
+   
+    void setyear(int y) {
+        year = y;
+    }
+
+    
+    void getyear() {
+        cout << "Year: " << year << endl;
+    }
+
+    
+    bool isleapyear(int y) {
+        if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0)) {
+            return true;  // It is a leap year
+        }
+        return false;  
+    }
+
+    
+    void printFebdate() {
+        int daysinfeb;
+        if (isleapyear(year)) {
+            daysinfeb = 29;
+            cout << year << " is a leap year!" << endl;
+        } else {
+            daysinfeb = 28;
+            cout << year << " is not a leap year." << endl;
+        }
+
+        cout << "February in the year " << year << " had " << daysinfeb << " days." << endl;
+    }
+};
+
+int main() {
+    int lyear;
+    LeapYear leapyearobj;
+
+    
+    cout << "Enter year: ";
+    cin >> lyear;
+
+   
+    leapyearobj.setyear(lyear);
+
+   
+    leapyearobj.printFebdate();
+
+    return 0;
+}
