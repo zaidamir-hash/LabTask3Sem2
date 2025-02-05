@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+class Emp_Data {
+private:
+    string name;
+    int date_of_joining;
+    int salary;
+
+public:
+    
+    Emp_Data(string name, int date_of_joining, int salary)
+        : name(name), date_of_joining(date_of_joining), salary(salary) {}
+
+   
+    void print() const {
+        cout << "Employee Name: " << name << endl;
+        cout << "Salary: " << salary << endl;
+    }
+
+    string getname() const { return name; }
+    int getdate_of_joining() const { return date_of_joining; }
+    int getsalary() const { return salary; }
+};
+
+int main() {
+   
+    Emp_Data employee("Zayed Khan", 37383, 50000);
+
+   
+    employee.print();
+
+    return 0;
+}
