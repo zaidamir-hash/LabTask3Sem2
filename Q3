@@ -1,0 +1,129 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class ATM {
+private:
+    string debit_card;
+    int ATM_PIN;
+    double balance;
+
+public:
+   
+    void set_debit_card(string card) {
+        debit_card = card;
+    }
+
+    void set_ATM_PIN(int pin) {
+        ATM_PIN = pin;
+    }
+
+    void set_balance(double initial_balance) {
+        balance = initial_balance;
+    }
+
+    // Getters
+    string get_debit_card() {
+        return debit_card;
+    }
+
+    int get_ATM_PIN() {
+        return ATM_PIN;
+    }
+
+    double get_balance() {
+        return balance;
+    }
+
+   
+    void withdraw_money(double amount) {
+        if (amount > balance) {
+            cout << "Insufficient balance. Transaction failed." << endl;
+        } else {
+            balance -= amount;
+            cout << "Transaction successful. You have withdrawn: $" << amount << endl;
+            cout << "Remaining balance: $" << balance << endl;
+        }
+    }
+
+    
+    void balance_inquiry() {
+        cout << "Your current balance is: $" << balance << endl;
+    }
+
+   
+    void bill_payment(double bill_amount) {
+        if (bill_amount > balance) {
+            cout << "Insufficient balance. Bill payment failed." << endl;
+        } else {
+            balance -= bill_amount;
+            cout << "Bill payment successful. You have paid: $" << bill_amount << endl;
+            cout << "Remaining balance: $" << balance << endl;
+        }
+    }
+
+   
+    bool authenticate(int pin) {
+        return pin == ATM_PIN;
+    }
+};
+
+int main() {
+    string card_number;
+    int pin;
+    double initial_balance;
+
+    ATM myATM;
+
+    cout << "Enter your debit card number: ";
+    cin >> card_number;
+    myATM.set_debit_card(card_number);
+
+    cout << "Set your ATM PIN: ";
+    cin >> pin;
+    myATM.set_ATM_PIN(pin);
+
+    cout << "Enter initial balance: $";
+    cin >> initial_balance;
+    myATM.set_balance(initial_balance);
+
+    int choice;
+    double amount;
+    int entered_pin;
+
+    cout << "\nEnter your PIN to access the ATM: ";
+    cin >> entered_pin;
+
+    if (myATM.authenticate(entered_pin)) {
+        do {
+            cout << "\n1. Withdraw Money\n2. Balance Inquiry\n3. Bill Payment\n4. Exit\n";
+            cout << "Enter your choice: ";
+            cin >> choice;
+
+            switch (choice) {
+                case 1:
+                    cout << "Enter the amount to withdraw: $";
+                    cin >> amount;
+                    myATM.withdraw_money(amount);
+                    break;
+                case 2:
+                    myATM.balance_inquiry();
+                    break;
+                case 3:
+                    cout << "Enter the bill amount to pay: $";
+                    cin >> amount;
+                    myATM.bill_payment(amount);
+                    break;
+                case 4:
+                    cout << "Exiting the ATM!" << endl;
+                    break;
+                default:
+                    cout << "Invalid choice. Please try again." << endl;
+            }
+        } while (choice != 4);
+    } else {
+        cout << "Incorrect PIN. Access denied." << endl;
+    }
+
+    return 0;
+}
