@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+class Shoes{
+    private:
+    string color;
+    int size;
+
+    public:
+
+    void setcolor(string scolor){
+        color = scolor;
+    }
+    
+    void setsize(int ssize){
+        size = ssize;
+    }
+    void getcolor(){
+        cout<< "Shoe color :"<<color<<endl;
+    }
+    void getsize(){
+        cout<< "Shoe Size :"<<size<<endl;
+    } 
+
+};
+int main(){
+    string shoecolor;
+    int shoesize;
+    
+    Shoes sandals;
+    Shoes joggers;
+    Shoes kids_shoes;
+    
+    cout << "Enter Sandals Color: ";
+    cin >> shoecolor;
+    cout << "Enter Sandals Size: ";
+    cin >> shoesize;
+    sandals.setcolor(shoecolor);
+    sandals.setsize(shoesize);
+
+    
+    cout << "\nEnter Joggers Color: ";
+    cin >> shoecolor;
+    cout << "Enter Joggers Size: ";
+    cin >> shoesize;
+    joggers.setcolor(shoecolor);
+    joggers.setsize(shoesize);
+
+   
+    cout << "\nEnter Kids' Shoes Color: ";
+    cin >> shoecolor;
+    cout << "Enter Kids' Shoes Size: ";
+    cin >> shoesize;
+    kids_shoes.setcolor(shoecolor);
+    kids_shoes.setsize(shoesize);
+
+    
+    cout << "\nSandals Information:" << endl;
+    sandals.getcolor();
+    sandals.getsize();
+
+    
+    cout << "\nJoggers Information:" << endl;
+    joggers.getcolor();
+    joggers.getsize();
+
+    
+    cout << "\nKids' Shoes Information:" << endl;
+    kids_shoes.getcolor();
+    kids_shoes.getsize();
+
+    return 0;
+    
+}
