@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+class ChatBot {
+private:
+   
+    string dictionaryWords[5];
+    string dictionaryMeanings[5];
+
+public:
+   
+    ChatBot() {
+       
+        dictionaryWords[0] = "hello"; dictionaryMeanings[0] = "A greeting or expression of goodwill.";
+        dictionaryWords[1] = "world"; dictionaryMeanings[1] = "The earth, together with all of its countries, peoples, and natural features.";
+        dictionaryWords[2] = "computer"; dictionaryMeanings[2] = "An electronic device for storing and processing data.";
+        dictionaryWords[3] = "chatbot"; dictionaryMeanings[3] = "A computer program designed to simulate conversation with human users.";
+        dictionaryWords[4] = "algorithm"; dictionaryMeanings[4] = "A process or set of rules to be followed in calculations or other problem-solving operations.";
+    }
+
+   
+    string getMeaning(const string& word) {
+        for (int i = 0; i < 5; ++i) {
+            if (dictionaryWords[i] == word) {
+                return dictionaryMeanings[i];
+            }
+        }
+        return "Meaning not found in dictionary.";
+    }
+
+   
+    string correctSpelling(const string& word) {
+        for (int i = 0; i < 5; ++i) {
+            if (dictionaryWords[i].substr(0, 3) == word.substr(0, 3)) {
+                return dictionaryWords[i];
+            }
+        }
+        return "No suggestion available.";
+    }
+
+    
+    void chat() {
+        string inputWord;
+        cout << "Enter a word (or 'exit' to quit): ";
+        while (cin >> inputWord && inputWord != "exit") {
+            cout << "\nChecking the word: " << inputWord << endl;
+            
+          
+            string meaning = getMeaning(inputWord);
+            cout << "Meaning: " << meaning << endl;
+
+            
+            if (meaning == "Meaning not found in dictionary.") {
+                string correctedWord = correctSpelling(inputWord);
+                cout << "Did you mean: " << correctedWord << "?" << endl;
+            }
+
+            cout << "\nEnter another word (or 'exit' to quit): ";
+        }
+    }
+};
+
+int main() {
+    
+    ChatBot* chatbot = new ChatBot();  
+
+  
+    chatbot->chat();
+
+    
+    delete chatbot;
+
+    return 0;
+}
