@@ -1,3 +1,3 @@
-# Sem2-OOP-Codes
+# LAB3 OOP-Codes
 
-This repository includes all sem2 oop codes.
+This repository includes  sem2 Lab3 Tasks
